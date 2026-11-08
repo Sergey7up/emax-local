@@ -1,0 +1,17 @@
+{
+  "domain": "emax_local",
+  "name": "EMAX Local",
+  "version": "2.1.0",
+  "codeowners": [
+    "@Sergey7up"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/Sergey7up/emax-local",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "requirements": [],
+  "dependencies": [
+    "network"
+  ],
+  "issue_tracker": "https://github.com/Sergey7up/emax-local/issues"
+}
