@@ -1,0 +1,117 @@
+{
+  "title": "EMAX Local",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your weather station",
+        "description": "Enter the station IPv4 address. Home Assistant discovers its identity and prepares the local connection automatically.",
+        "data": {
+          "station_ip": "Station IPv4 address"
+        }
+      },
+      "reconfigure": {
+        "title": "Connect your weather station",
+        "description": "Enter the station IPv4 address. Home Assistant discovers its identity and prepares the local connection automatically.",
+        "data": {
+          "station_ip": "Station IPv4 address"
+        }
+      },
+      "confirm": {
+        "title": "Connect locally",
+        "description": "**Station:** {station_ip} · {mac}\n**Wi-Fi firmware:** {firmware}\n**Current channel B:** `{sockb}`\n\nAfter saving, Home Assistant starts the receiver, saves recovery settings, sets channel B and restarts the Wi-Fi module. Setup status shows the result and waits for live measurements. Channel A remains connected to the cloud.\n\nThe suggested Home Assistant address is {receiver_ip}:{port}. Change it only if your network requires this.",
+        "data": {
+          "name": "Device name",
+          "receiver_ip": "Home Assistant IPv4 address",
+          "listen_port": "Local TCP port",
+          "replace_existing": "Replace the existing channel B destination"
+        }
+      }
+    },
+    "error": {
+      "invalid_ipv4": "Enter a unicast IPv4 address.",
+      "invalid_port": "Enter a port from 1024 to 65534.",
+      "invalid_name": "Enter a name of 1–64 characters.",
+      "port_already_configured": "Another station uses this port.",
+      "port_unavailable": "This TCP port is unavailable.",
+      "cannot_connect": "No compatible HF-LPT230 module replied on UDP 48899.",
+      "wrong_device": "The MAC or module does not match this station.",
+      "no_receiver_ip": "Cannot determine the Home Assistant LAN address.",
+      "replacement_required": "Confirm replacement of the existing channel B destination.",
+      "not_local_address": "This address does not belong to Home Assistant."
+    },
+    "abort": {
+      "already_configured": "This station is already configured.",
+      "reconfigure_successful": "Connection settings saved. Automatic setup is starting; check Connection status.",
+      "setup_in_progress": "Station setup is already running."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "indoor_temperature": {
+        "name": "Indoor temperature"
+      },
+      "indoor_humidity": {
+        "name": "Indoor humidity"
+      },
+      "ch1_temperature": {
+        "name": "CH1 temperature"
+      },
+      "ch1_humidity": {
+        "name": "CH1 humidity"
+      },
+      "ch2_temperature": {
+        "name": "CH2 temperature"
+      },
+      "ch2_humidity": {
+        "name": "CH2 humidity"
+      },
+      "ch3_temperature": {
+        "name": "CH3 temperature"
+      },
+      "ch3_humidity": {
+        "name": "CH3 humidity"
+      },
+      "local_pressure": {
+        "name": "Local pressure"
+      },
+      "setup_status": {
+        "name": "Connection status",
+        "state": {
+          "configuring": "Configuring",
+          "waiting_for_data": "Waiting for measurements",
+          "ready": "Receiving measurements",
+          "error": "Setup failed — see logs",
+          "interrupted": "Setup interrupted — reconfigure"
+        }
+      }
+    },
+    "binary_sensor": {
+      "indoor_battery_low": {
+        "name": "Indoor battery low"
+      },
+      "ch1_battery_low": {
+        "name": "CH1 battery low"
+      },
+      "ch1_reception": {
+        "name": "CH1 reception"
+      },
+      "ch2_battery_low": {
+        "name": "CH2 battery low"
+      },
+      "ch2_reception": {
+        "name": "CH2 reception"
+      },
+      "ch3_battery_low": {
+        "name": "CH3 battery low"
+      },
+      "ch3_reception": {
+        "name": "CH3 reception"
+      }
+    },
+    "button": {
+      "restart_module": {
+        "name": "Restart Wi-Fi module"
+      }
+    }
+  }
+}

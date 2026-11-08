@@ -1,0 +1,117 @@
+{
+  "title": "EMAX Local",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Підключити метеостанцію",
+        "description": "Укажіть IPv4-адресу станції. Home Assistant визначить пристрій і підготує локальне підключення автоматично.",
+        "data": {
+          "station_ip": "IPv4-адреса станції"
+        }
+      },
+      "reconfigure": {
+        "title": "Підключити метеостанцію",
+        "description": "Укажіть IPv4-адресу станції. Home Assistant визначить пристрій і підготує локальне підключення автоматично.",
+        "data": {
+          "station_ip": "IPv4-адреса станції"
+        }
+      },
+      "confirm": {
+        "title": "Локальне підключення",
+        "description": "**Станція:** {station_ip} · {mac}\n**Прошивка Wi-Fi:** {firmware}\n**Канал B зараз:** `{sockb}`\n\nПісля збереження Home Assistant запустить приймач, збереже налаштування для відновлення, налаштує канал B і перезапустить Wi-Fi-модуль. Результат та очікування вимірювань видно у «Стані підключення». Канал A продовжить роботу з хмарою.\n\nЗапропонована адреса Home Assistant: {receiver_ip}:{port}. Змінюйте її лише за потреби.",
+        "data": {
+          "name": "Назва пристрою",
+          "receiver_ip": "IPv4-адреса Home Assistant",
+          "listen_port": "Локальний TCP-порт",
+          "replace_existing": "Замінити наявне призначення каналу B"
+        }
+      }
+    },
+    "error": {
+      "invalid_ipv4": "Укажіть IPv4-адресу пристрою в локальній мережі.",
+      "invalid_port": "Укажіть порт від 1024 до 65534.",
+      "invalid_name": "Укажіть назву довжиною 1–64 символи.",
+      "port_already_configured": "Цей порт використовує інша станція.",
+      "port_unavailable": "Home Assistant не може відкрити цей TCP-порт.",
+      "cannot_connect": "Сумісний HF-LPT230 не відповів на UDP-порту 48899.",
+      "wrong_device": "MAC-адреса або модуль не відповідає цій станції.",
+      "no_receiver_ip": "Не вдалося визначити локальну адресу Home Assistant.",
+      "replacement_required": "Підтвердьте заміну наявного призначення каналу B.",
+      "not_local_address": "Ця адреса не належить Home Assistant."
+    },
+    "abort": {
+      "already_configured": "Цю станцію вже додано.",
+      "reconfigure_successful": "Параметри збережено. Автоналаштування запускається; перевірте «Стан підключення».",
+      "setup_in_progress": "Налаштування станції вже виконується."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "indoor_temperature": {
+        "name": "Температура станції"
+      },
+      "indoor_humidity": {
+        "name": "Вологість станції"
+      },
+      "ch1_temperature": {
+        "name": "Температура каналу 1"
+      },
+      "ch1_humidity": {
+        "name": "Вологість каналу 1"
+      },
+      "ch2_temperature": {
+        "name": "Температура каналу 2"
+      },
+      "ch2_humidity": {
+        "name": "Вологість каналу 2"
+      },
+      "ch3_temperature": {
+        "name": "Температура каналу 3"
+      },
+      "ch3_humidity": {
+        "name": "Вологість каналу 3"
+      },
+      "local_pressure": {
+        "name": "Локальний тиск"
+      },
+      "setup_status": {
+        "name": "Стан підключення",
+        "state": {
+          "configuring": "Налаштування",
+          "waiting_for_data": "Очікування вимірювань",
+          "ready": "Вимірювання надходять",
+          "error": "Помилка налаштування — див. журнал",
+          "interrupted": "Налаштування перервано — повторіть через меню"
+        }
+      }
+    },
+    "binary_sensor": {
+      "indoor_battery_low": {
+        "name": "Розряд батареї станції"
+      },
+      "ch1_battery_low": {
+        "name": "Розряд батареї каналу 1"
+      },
+      "ch1_reception": {
+        "name": "Приймання сигналу каналу 1"
+      },
+      "ch2_battery_low": {
+        "name": "Розряд батареї каналу 2"
+      },
+      "ch2_reception": {
+        "name": "Приймання сигналу каналу 2"
+      },
+      "ch3_battery_low": {
+        "name": "Розряд батареї каналу 3"
+      },
+      "ch3_reception": {
+        "name": "Приймання сигналу каналу 3"
+      }
+    },
+    "button": {
+      "restart_module": {
+        "name": "Перезапустити Wi-Fi-модуль"
+      }
+    }
+  }
+}
